@@ -12,7 +12,6 @@
     {applications, [
                     kernel,
                     stdlib,
-                    sasl,
                     crypto
                    ]}
 ]}.
