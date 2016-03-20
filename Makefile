@@ -1,19 +1,27 @@
+ifneq (,$(findstring Windows,$(OS)))
+    SEP := $(strip \)
+else
+    SEP := $(strip /)
+endif
+
+REBAR := .$(SEP)rebar
+
 all: deps
 
 deps:
-	rebar get-deps
-	rebar compile
+	$(REBAR) get-deps
+	$(REBAR) compile
 
 app:
-	rebar compile
+	$(REBAR) compile
 
 tests:
-	rebar eunit
+	$(REBAR) eunit
 
 clean:
-	rebar clean
+	$(REBAR) clean
 
 distclean: clean
-	rebar delete-deps
+	$(REBAR) delete-deps
 
 .PHONY: all deps app tests clean distclean
